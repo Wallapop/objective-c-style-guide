@@ -1,8 +1,8 @@
-# NYTimes Objective-C Style Guide
+# Wallapop Objective-C Style Guide
 
-This style guide outlines the coding conventions of the iOS team at The New York Times. We welcome your feedback in [issues](https://github.com/NYTimes/objetive-c-style-guide/issues), [pull requests](https://github.com/NYTimes/objetive-c-style-guide/pulls) and [tweets](https://twitter.com/nytimesmobile). Also, [we're hiring](http://jobs.nytco.com/job/New-York-iOS-Developer-Job-NY/2572221/).
+This style guide outlines the coding conventions of the iOS team at Wallapop. We welcome your feedback in [issues](https://github.com/Wallapop/objetive-c-style-guide/issues), [pull requests](https://github.com/Wallapop/objetive-c-style-guide/pulls) and [tweets](https://twitter.com/Wallapopeng).
 
-Thanks to all of [our contributors](https://github.com/NYTimes/objective-c-style-guide/contributors).
+Thanks to all [the contributors](https://github.com/SHNimes/objective-c-style-guide/contributors). And special thanks to The New York Times for the great style guide base.
 
 ## Introduction
 
@@ -72,7 +72,7 @@ else {
 
 ## Conditionals
 
-Conditional bodies should always use braces even when a conditional body could be written without braces (e.g., it is one line only) to prevent [errors](https://github.com/NYTimes/objective-c-style-guide/issues/26#issuecomment-22074256). These errors include adding a second line and expecting it to be part of the if-statement. Another, [even more dangerous defect](http://programmers.stackexchange.com/a/16530) may happen where the line "inside" the if-statement is commented out, and the next line unwittingly becomes part of the if-statement. In addition, this style is more consistent with all other conditionals, and therefore more easily scannable.
+Conditional bodies should always use braces even when a conditional body could be written without braces (e.g., it is one line only) to prevent [errors](https://github.com/SHNimes/objective-c-style-guide/issues/26#issuecomment-22074256). These errors include adding a second line and expecting it to be part of the if-statement. Another, [even more dangerous defect](http://programmers.stackexchange.com/a/16530) may happen where the line "inside" the if-statement is commented out, and the next line unwittingly becomes part of the if-statement. In addition, this style is more consistent with all other conditionals, and therefore more easily scannable.
 
 **For example:**
 ```objc
@@ -149,7 +149,7 @@ Property definitions should be used in place of naked instance variables wheneve
 **For example:**
 
 ```objc
-@interface NYTSection: NSObject
+@interface SHNSection: NSObject
 
 @property (nonatomic) NSString *headline;
 
@@ -159,7 +159,7 @@ Property definitions should be used in place of naked instance variables wheneve
 **Not:**
 
 ```objc
-@interface NYTSection : NSObject {
+@interface SHNSection : NSObject {
     NSString *headline;
 }
 ```
@@ -186,12 +186,12 @@ UIButton *settingsButton;
 UIButton *setBut;
 ```
 
-A three letter prefix (e.g. `NYT`) should always be used for class names and constants, however may be omitted for Core Data entity names. Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
+A three letter prefix (e.g. `SHN`) should always be used for class names and constants, however may be omitted for Core Data entity names. Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
 **For example:**
 
 ```objc
-static const NSTimeInterval NYTArticleViewControllerNavigationFadeAnimationDuration = 0.3;
+static const NSTimeInterval SHNArticleViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
 **Not:**
@@ -229,12 +229,15 @@ Block comments should generally be avoided, as code should be as self-documentin
 `init` methods should be structured like this:
 
 ```objc
-- (instancetype)init {
+- (instancetype)init 
+{
     self = [super init]; // or call the designated initializer
-    if (self) {
-        // Custom initialization
-    }
-
+    if (!self) {
+        return nil;
+    }             
+    
+    // Custom initialization
+    
     return self;
 }
 ```
@@ -296,15 +299,15 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **For example:**
 
 ```objc
-static NSString * const NYTAboutViewControllerCompanyName = @"The New York Times Company";
+static NSString *const SHNAboutViewControllerCompanyName = @"Wallapop";
 
-static const CGFloat NYTImageThumbnailHeight = 50.0;
+static CGFloat const SHNImageThumbnailHeight = 50.0;
 ```
 
 **Not:**
 
 ```objc
-#define CompanyName @"The New York Times Company"
+#define CompanyName @"Wallapop"
 
 #define thumbnailHeight 2
 ```
@@ -316,9 +319,9 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, NYTAdRequestState) {
-    NYTAdRequestStateInactive,
-    NYTAdRequestStateLoading
+typedef NS_ENUM(NSInteger, SHNAdRequestState) {
+    SHNAdRequestStateInactive,
+    SHNAdRequestStateLoading
 };
 ```
 
@@ -329,22 +332,22 @@ When working with bitmasks, use the `NS_OPTIONS` macro.
 **Example:**
 
 ```objc
-typedef NS_OPTIONS(NSUInteger, NYTAdCategory) {
-  NYTAdCategoryAutos      = 1 << 0,
-  NYTAdCategoryJobs       = 1 << 1,
-  NYTAdCategoryRealState  = 1 << 2,
-  NYTAdCategoryTechnology = 1 << 3
+typedef NS_OPTIONS(NSUInteger, SHNAdCategory) {
+  SHNAdCategoryAutos      = 1 << 0,
+  SHNAdCategoryJobs       = 1 << 1,
+  SHNAdCategoryRealState  = 1 << 2,
+  SHNAdCategoryTechnology = 1 << 3
 };
 ```
 
 ## Private Properties
 
-Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `NYTPrivate` or `private`) should never be used unless extending another class.
+Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `SHNPrivate` or `private`) should never be used unless extending another class.
 
 **For example:**
 
 ```objc
-@interface NYTAdvertisement ()
+@interface SHNAdvertisement ()
 
 @property (nonatomic, strong) GADBannerView *googleAdView;
 @property (nonatomic, strong) ADBannerView *iAdView;
@@ -413,14 +416,13 @@ Text and example taken from the [Cocoa Naming Guidelines](https://developer.appl
 
 Singleton objects should use a thread-safe pattern for creating their shared instance.
 ```objc
-+ (instancetype)sharedInstance {
++ (instancetype)sharedInstance 
+{
    static id sharedInstance = nil;
-
    static dispatch_once_t onceToken;
    dispatch_once(&onceToken, ^{
       sharedInstance = [[self alloc] init];
    });
-
    return sharedInstance;
 }
 ```
@@ -430,18 +432,18 @@ This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.
 
 If there is more than one import statement, group the statements [together](http://ashfurrow.com/blog/structuring-modern-objective-c). Commenting each group is optional.
 
-Note: For modules use the [@import](http://clang.llvm.org/docs/Modules.html#using-modules) syntax.
+Note: For frameworks and pods use the framework import naming (ie. ```#import <QuartzCore/QuartzCore.h>```).
 
 ```objc
 // Frameworks
-@import QuartzCore;
+#import <QuartzCore/QuartzCore.h>
 
 // Models
-#import "NYTUser.h"
+#import "SHNUser.h"
 
 // Views
-#import "NYTButton.h"
-#import "NYTUserView.h"
+#import "SHNButton.h"
+#import "SHNUserView.h"
 ```
 
 ## Xcode project
@@ -461,3 +463,4 @@ If ours doesn't fit your tastes, have a look at some other style guides:
 * [CocoaDevCentral](http://cocoadevcentral.com/articles/000082.php)
 * [Luke Redpath](http://lukeredpath.co.uk/blog/my-objective-c-style-guide.html)
 * [Marcus Zarra](http://www.cimgf.com/zds-code-style-guide/)
+* [ObjC Zen](https://github.com/objc-zen/objc-zen-book)
