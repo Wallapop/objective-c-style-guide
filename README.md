@@ -438,12 +438,18 @@ Note: For frameworks and pods use the framework import naming (ie. ```#import <Q
 // Frameworks
 #import <QuartzCore/QuartzCore.h>
 
-// Models
-#import "SHNUser.h"
+// General Classes
+#import "SHNCurrentClass.h"
 
 // Views
 #import "SHNButton.h"
 #import "SHNUserView.h"
+
+// Models
+#import "SHNUser.h"
+
+// Categories
+#import "UIColor+Wallapop.h"
 ```
 
 ## Xcode project
