@@ -458,6 +458,14 @@ The physical files should be kept in sync with the Xcode project files in order 
 
 When possible, always turn on "Treat Warnings as Errors" in the target's Build Settings and enable as many [additional warnings](http://boredzo.org/blog/archives/2009-11-07/warnings) as possible. If you need to ignore a specific warning, use [Clang's pragma feature](http://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
 
+## Branches
+
+Must be described as `feature`, `improvement`, `fix` or `hotfix`, creating them on its respective folder.
+
+They must start with the issue id, followed by a short description on `snake_case`. 
+Example:
+`feature/IOS-169-buy_a_new_cheese_machine`
+
 # Other Objective-C Style Guides
 
 If ours doesn't fit your tastes, have a look at some other style guides:
