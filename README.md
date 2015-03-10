@@ -464,7 +464,7 @@ Must be described as `feature`, `improvement`, `fix` or `hotfix`, creating them 
 
 They must start with the issue id, followed by a short description on `snake_case`. 
 Example:
-`feature/IOS-169-buy_a_new_cheese_machine`
+`feature/IOS-169_buy_a_new_cheese_machine`
 
 # Other Objective-C Style Guides
 
