@@ -463,6 +463,7 @@ When possible, always turn on "Treat Warnings as Errors" in the target's Build S
 Must be described as `feature`, `improvement`, `fix` or `hotfix`, creating them on its respective folder.
 
 They must start with the issue id, followed by a short description on `snake_case`. 
+
 Example:
 `feature/IOS-169_buy_a_new_cheese_machine`
 
