@@ -184,7 +184,8 @@ If the system implies automatically an attribute of a property, you shouldn't sp
 @property (nonatomic, strong) NSString *headline;
 ```
 
-This applies to `readwrite`, `strong` and `assign`properties, so you should specify those attributes: 
+This applies to `atomic`, `readwrite`, `strong` and `assign`, so you should specify those attributes: 
+- `nonatomic`
 - `weak`
 - `readonly`
 
